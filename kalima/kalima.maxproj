@@ -2,8 +2,8 @@
 	"name" : "kalima",
 	"version" : 1,
 	"creationdate" : -715103935,
-	"modificationdate" : -711299768,
-	"viewrect" : [ 1067.0, 22.0, 533.0, 819.0 ],
+	"modificationdate" : -711054775,
+	"viewrect" : [ 640.0, 22.0, 640.0, 719.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -32,6 +32,11 @@
 			}
 ,
 			"simple-delay.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"cyclegrain.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

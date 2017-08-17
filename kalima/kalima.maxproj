@@ -2,8 +2,8 @@
 	"name" : "kalima",
 	"version" : 1,
 	"creationdate" : -715103935,
-	"modificationdate" : -711054775,
-	"viewrect" : [ 640.0, 22.0, 640.0, 719.0 ],
+	"modificationdate" : -710070066,
+	"viewrect" : [ 1920.0, 22.0, 640.0, 719.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -16,6 +16,11 @@
 			}
 ,
 			"linegrain.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"cyclegrain.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -36,10 +41,19 @@
 				"local" : 1
 			}
 ,
-			"cyclegrain.maxpat" : 			{
+			"switch-scale-example.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
+,
+			"Touch Board Communication.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+
+		}
+,
+		"data" : 		{
 
 		}
 

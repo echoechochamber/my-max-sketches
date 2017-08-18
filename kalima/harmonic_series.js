@@ -51,7 +51,7 @@ function num_harmonics(n) {
 	// add a box to the input
 		num = this.patcher.newdefault(700,80, "flonum"); 
 		this.patcher.connect(num,0, ourself, 1);
-		ez = this.patcher.newdefault(700,700, "ezdac~"); 
+		ez = this.patcher.newdefault(400,650, "ezdac~"); 
 	}
 	
 	for(var i=0; i<nHarm; i+= 1) {

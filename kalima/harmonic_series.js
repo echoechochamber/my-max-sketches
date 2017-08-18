@@ -23,6 +23,7 @@ var myCycle = null;
 var myGain = null; 
 var num = null; 
 var ez = null; // ezdac
+var num = null; 
 var nHarm = 0;
 var outputval = 0; 
 // Outlet coordinates
@@ -42,28 +43,20 @@ function num_harmonics(n) {
 	}
 
 	// re-init all of the arrays
-
-	myNum = [nHarm]; 
-	myMult = [nHarm]; 
 	myCycle = [nHarm]; 
 	myGain = [nHarm]; 
-	myNumMult = [nHarm]; 
+	
 	var ourself = this.box; 
+	if(n>0){
 	// add a box to the input
-	num = this.patcher.newdefault(700,80, "flonum"); 
-	this.patcher.connect(num,0, ourself, 1);
-	ez = this.patcher.newdefault(700,700, "ezdac~"); 
-
-	for(var i=0.0; i<nHarm; i+= 1.0) {
-
-		myMult[i] = this.patcher.newdefault(outletInsetX + (i * outletOffsetX), outletInsetY + (i * outletOffsetY), "*" ); 
-		this.patcher.connect(ourself, i, myMult[i], 0); 
-		myNumMult[i] = this.patcher.newdefault(outletInsetX + (i * outletOffsetX), outletInsetY*2 + (i * outletOffsetY), "flonum", i+1); 
-		this.patcher.connect(myNumMult[i], 0, myMult[i], 1); 
-		myNum[i] = this.patcher.newdefault(outletInsetX + (i * outletOffsetX), outletInsetY*2 + (i * outletOffsetY), "flonum"); 
-		this.patcher.connect(myMult[i], 0, myNum[i], 0); 
+		num = this.patcher.newdefault(700,80, "flonum"); 
+		this.patcher.connect(num,0, ourself, 1);
+		ez = this.patcher.newdefault(700,700, "ezdac~"); 
+	}
+	
+	for(var i=0; i<nHarm; i+= 1) {
 		myCycle[i] = this.patcher.newdefault(outletInsetX + (i * outletOffsetX), outletInsetY*3 + (i * outletOffsetY), "cycle~"); 
-		this.patcher.connect(myNum[i], 0, myCycle[i], 0); 
+		this.patcher.connect(ourself, i, myCycle[i], 0); 
 		myGain[i] = this.patcher.newdefault(outletInsetX + (i * outletOffsetX), outletInsetY*4 + (i * outletOffsetY), "gain~"); 
 		this.patcher.connect( myCycle[i], 0, myGain[i], 0); 
 // connect everything to the 
@@ -75,31 +68,31 @@ function num_harmonics(n) {
 
 // Clears away any existing inlets and outlets
 function clearIO() {
-	if(myMult != null) {
 		for(i=nHarm-1; i>-1; i--) {
-			this.patcher.remove(myNumMult[i]);
-			this.patcher.remove(myMult[i]);
-			this.patcher.remove(myNum[i]); 
 			this.patcher.remove(myCycle[i]); 
 			this.patcher.remove(myGain[i]); 
 		}
-	}
+		this.patcher.remove(num); 
+		this.patcher.remove(ez); 
+	
 }
 
 function msg_int(v){
-	post(v);
+	//post(v);
 	outputval = v; 
 	bang(); 
 }
 
 function msg_float(v){
-	post(v);
+	//post(v);
 	outputval = v; 
 	bang(); 
 }
 
 function bang(){
+	post(outputval);
+	post('\n');
 	for(var i = 0; i < nHarm; i++){
-		outlet(i, outputval);
+		outlet(i,"float", outputval* (i+1));
 	}	
 }

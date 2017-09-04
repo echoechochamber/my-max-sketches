@@ -11,7 +11,6 @@ if (jsarguments.length > 0) {
 var myCycle = null;
 var myGain = null;
 var num = null;
-var ez = null; // ezdac
 var num = null;
 var nHarm = 0;
 var outputval = 0;
@@ -42,7 +41,6 @@ function num_harmonics(n) {
 		num = this.patcher.newdefault(500, 80, "number");
 		num.set(32);
 		this.patcher.connect(num, 0, ourself, 1);
-		ez = this.patcher.newdefault(400, 650, "ezdac~");
 	}
 
 	for (var i = 0; i < nHarm; i += 1) {
@@ -53,8 +51,7 @@ function num_harmonics(n) {
 		this.patcher.connect(myCycle[i], 0, myGain[i], 0);
 		// connect everything to the 
 		this.patcher.connect(this.patcher.getnamed("midiDebounce"), i, myGain[i], 0); 
-		this.patcher.connect(myGain[i], 0, ez, 0);
-		this.patcher.connect(myGain[i], 0, ez, 1);
+		this.patcher.connect(myGain[i], 0, this.patcher.getnamed("filterOut"), 0);
 	}
 
 }
@@ -67,7 +64,6 @@ function clearIO() {
 		this.patcher.remove(myGain[i]);
 	}
 	this.patcher.remove(num);
-	this.patcher.remove(ez);
 }
 
 function msg_int(v) {

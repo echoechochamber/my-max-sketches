@@ -2,8 +2,8 @@
 	"name" : "kalima",
 	"version" : 1,
 	"creationdate" : -715104056,
-	"modificationdate" : -708958232,
-	"viewrect" : [ 293.0, 60.0, 640.0, 719.0 ],
+	"modificationdate" : -708784440,
+	"viewrect" : [ 640.0, 22.0, 640.0, 740.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
 	"showdependencies" : 1,
@@ -57,6 +57,11 @@
 			}
 ,
 			"midi-knob-debounce.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"midi-knob-debounce-multislider.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}

@@ -2,7 +2,7 @@
 	"name" : "kalima",
 	"version" : 1,
 	"creationdate" : -715104056,
-	"modificationdate" : -708784440,
+	"modificationdate" : -705752059,
 	"viewrect" : [ 640.0, 22.0, 640.0, 740.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 0,
@@ -56,12 +56,17 @@
 				"local" : 1
 			}
 ,
-			"midi-knob-debounce.maxpat" : 			{
+			"kalima-sensors.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
 ,
 			"midi-knob-debounce-multislider.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1
+			}
+,
+			"midi-knob-debounce.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
 			}
@@ -73,6 +78,10 @@
 		}
 ,
 		"data" : 		{
+			"arduino-sensor-example.txt" : 			{
+				"kind" : "textfile",
+				"local" : 1
+			}
 
 		}
 

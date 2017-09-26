@@ -1,0 +1,94 @@
+#include <RunningAverage.h>
+
+/*
+   beginning of the sensor code for the 1010 Resiency project performance
+	this is the state of the code on the date of the performance 9/24/2017
+
+   AK Williams 9/13/2017
+*/
+
+// pins
+const int heartPin = A0;
+const int heartBeatPin = 10;
+const int leadsMinus = 12;
+const int leadsPlus = 11;
+
+
+const int musclePin = A1;
+
+const int gsrPin = A2;
+const int numGsrReadings = 15;
+RunningAverage gsrAvg(gsrPin, numGsrReadings);
+
+const int breathPin = A3;
+const int numBreathReadings = 15;
+RunningAverage breathAvg(breathPin, numBreathReadings);
+
+
+const char space = ' ';
+
+// minute in microseconds (for heart rate calculation)
+const long minuteLength = 60000000;
+long duration;
+long currentHeartRate;
+
+/**************************************************/
+void setup() {
+  Serial.begin(38400);
+}
+
+/**************************************************/
+// the loop routine runs over and over again forever:
+void loop() {
+  outputHeartReading();
+  outputHeartRate();
+  gsrReading();
+  outputMuscleReading();
+  breathReading();
+}
+
+/**************************************************/
+void gsrReading() {
+  gsrAvg.updateAvg();
+  sendToSerial("GSR", gsrAvg.getAverage()/numGsrReadings);
+}
+
+/**************************************************/
+void outputMuscleReading() {
+  sendToSerial("MYO", analogRead(musclePin));
+}
+
+/**************************************************/
+void outputHeartReading() {
+  if ( (digitalRead(leadsMinus) == 0) && (digitalRead(leadsPlus) == 0) ) {
+    sendToSerial("HEART", analogRead(heartPin));
+  }
+}
+
+/**************************************************/
+void outputHeartRate() {
+  //  pulsePin is the time in ms since the last time the digital read went high
+  duration = pulseIn(heartBeatPin, LOW);
+  currentHeartRate = minuteLength / duration;
+
+  if (currentHeartRate > 40 && currentHeartRate < 200) {
+    sendToSerial("HR", currentHeartRate);
+  }
+}
+/**************************************************/
+void breathReading() {
+  breathAvg.updateAvg();
+  // subtract everything
+  sendToSerial("BREATH", breathAvg.getAverage()/numBreathReadings );
+}
+/**************************************************/
+void sendToSerial(String key, int value) {
+
+  Serial.print(key);
+  Serial.print(" ");
+  Serial.println(value);
+
+
+}
+/**************************************************/
+

@@ -44,7 +44,7 @@ function num_harmonics(n) {
 	}
 
 	for (var i = 0; i < nHarm; i += 1) {
-		myCycle[i] = this.patcher.newdefault(outletInsetX + (i * outletOffsetX), outletInsetY * 3 + (i * outletOffsetY), "cycle~");
+		myCycle[i] = this.patcher.newdefault(outletInsetX + (i * outletOffsetX), outletInsetY * 3 + (i * outletOffsetY), "saw~");
 		this.patcher.connect(ourself, i, myCycle[i], 0);
 		this.patcher.connect( this.patcher.getnamed("phase"), i, myCycle[i], 1);
 		myGain[i] = this.patcher.newdefault(outletInsetX + (i * outletOffsetX), outletInsetY * 4 + (i * outletOffsetY), "gain~");

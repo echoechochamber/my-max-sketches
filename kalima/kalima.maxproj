@@ -2,10 +2,10 @@
 	"name" : "kalima",
 	"version" : 1,
 	"creationdate" : -715104056,
-	"modificationdate" : -705752059,
+	"modificationdate" : -705751555,
 	"viewrect" : [ 640.0, 22.0, 640.0, 740.0 ],
 	"autoorganize" : 1,
-	"hideprojectwindow" : 0,
+	"hideprojectwindow" : 1,
 	"showdependencies" : 1,
 	"autolocalize" : 0,
 	"contents" : 	{
@@ -32,8 +32,7 @@
 ,
 			"hearbeat-synth.maxpat" : 			{
 				"kind" : "patcher",
-				"local" : 1,
-				"toplevel" : 1
+				"local" : 1
 			}
 ,
 			"simple-delay.maxpat" : 			{
@@ -53,7 +52,8 @@
 ,
 			"harmonic_series.maxpat" : 			{
 				"kind" : "patcher",
-				"local" : 1
+				"local" : 1,
+				"toplevel" : 1
 			}
 ,
 			"kalima-sensors.maxpat" : 			{
@@ -100,5 +100,5 @@
 	"readonly" : 0,
 	"devpathtype" : 0,
 	"devpath" : ".",
-	"sortmode" : 0
+	"sortmode" : 1
 }

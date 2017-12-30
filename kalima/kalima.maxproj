@@ -2,8 +2,8 @@
 	"name" : "kalima",
 	"version" : 1,
 	"creationdate" : -715104056,
-	"modificationdate" : -705751555,
-	"viewrect" : [ 640.0, 22.0, 640.0, 740.0 ],
+	"modificationdate" : -697476325,
+	"viewrect" : [ 374.0, 151.0, 532.0, 505.0 ],
 	"autoorganize" : 1,
 	"hideprojectwindow" : 1,
 	"showdependencies" : 1,
@@ -52,8 +52,7 @@
 ,
 			"harmonic_series.maxpat" : 			{
 				"kind" : "patcher",
-				"local" : 1,
-				"toplevel" : 1
+				"local" : 1
 			}
 ,
 			"kalima-sensors.maxpat" : 			{
@@ -69,6 +68,12 @@
 			"midi-knob-debounce.maxpat" : 			{
 				"kind" : "patcher",
 				"local" : 1
+			}
+,
+			"receive-OSC.maxpat" : 			{
+				"kind" : "patcher",
+				"local" : 1,
+				"toplevel" : 1
 			}
 
 		}
